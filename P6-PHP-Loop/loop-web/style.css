@@ -1,0 +1,52 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Style header */
+ul {
+    list-style-type: none;
+    background-color: #333;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    margin-right: 20px;
+}
+
+a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+/* Style content */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style 404 page */
+.error-message {
+    color: #ff0000;
+    font-size: 24px;
+    text-align: center;
+}
