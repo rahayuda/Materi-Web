@@ -36,7 +36,7 @@
 	echo "Rate: $rate<br>";  
 
     echo "Foto:<br><img src='$gambarPath' alt='Uploaded Gambar'><br>";
-    echo "File: ";
+    echo "Dokumen: ";
 ?> 
 
 <a href='<?php echo $filePath; ?>'>Dokumen</a>
