@@ -1,0 +1,75 @@
+<form action="latihan.php" method="post" enctype="multipart/form-data">
+	<table>   
+		<tr>
+			<td>Nama</td>
+			<td><input type="text" name="nama"/></td>
+		</tr>
+		<tr>
+			<td>Tempat Lahir</td>
+			<td>
+				<select type="text" name="tempat">
+  					<option value="Denpasar">Denpasar</option>
+  					<option value="Gianyar">Gianyar</option>
+  					<option value="Klungkung">Klungkung</option>
+  					<option value="Karangasem">Karangasem</option>
+  					<option value="Singaraja">Singaraja</option>
+  					<option value="Bangli">Bangli</option>
+  					<option value="Jimbaran">Jimbaran</option>
+  					<option value="Tabanan">Tabanan</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Tanggal Lahir</td>
+			<td><input type="date" name="lahir"/></td>
+		</tr>
+		<tr>
+			<td>Gender</td>
+			<td>
+				<input type="radio" name="gender" value="Pria" />
+				<label>Pria</label><br>
+				<input type="radio" name="gender" value="Wanita" />
+				<label>Wanita</label><br>
+			</td>
+		</tr>
+		<tr>
+			<td>Pendidikan</td>
+			<td>
+				<input type="checkbox" name="pendidikan[]" value="Sarjana">
+				<label>Sarjana</label><br>
+				<input type="checkbox" name="pendidikan[]" value="Magister">
+				<label>Magister</label><br>
+				<input type="checkbox" name="pendidikan[]" value="Doctor">
+				<label>Doctor</label><br>								
+			</td>
+		</tr>
+		<tr>
+			<td>Usia</td>
+			<td><input type="number" name="usia"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" name="email"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="password"></td>
+		</tr>
+		<tr>
+			<td>Foto</td>
+			<td><input type="file" name="gambar"></td>
+		</tr>
+		<tr>
+			<td>Dokumen</td>
+			<td><input type="file" name="file"></td>
+		</tr>
+		<tr>
+			<td>Rate</td>
+			<td><input type="range" name="rate" min="0" max="100"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" value="submit" name="submit"/>&nbsp;<input type="reset" value="reset"/></td>
+		</tr> 		
+	</table>
+</form>
