@@ -1,8 +1,8 @@
-CREATE TABLE katagori
+CREATE TABLE kategori
 (
-  id_katagori INT NOT NULL AUTO_INCREMENT,
-  nama_katagori VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id_katagori)
+  id_kategori INT NOT NULL AUTO_INCREMENT,
+  nama_kategori VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id_kategori)
 );
 
 CREATE TABLE pesanan
@@ -18,9 +18,9 @@ CREATE TABLE produk
   nama_produk VARCHAR(255) NOT NULL,
   harga INT NOT NULL,
   gambar VARCHAR(255) NOT NULL,
-  id_katagori INT NOT NULL,
+  id_kategori INT NOT NULL,
   PRIMARY KEY (id_produk),
-  FOREIGN KEY (id_katagori) REFERENCES katagori(id_katagori) ON DELETE CASCADE
+  FOREIGN KEY (id_kategori) REFERENCES kategori(id_kategori) ON DELETE CASCADE
 );
 
 CREATE TABLE detailpesanan
