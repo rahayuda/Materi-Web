@@ -21,7 +21,7 @@
 	</thead>
 	<tbody>
 		<?php
-		$que   	= "SELECT * FROM detail_pesanan JOIN pesanan ON pesanan.id_pesanan = detail_pesanan.id_pesanan JOIN produk ON produk.id_produk = detail_pesanan.id_produk JOIN kategori ON kategori.id_kategori = produk.id_kategori";
+		$que   	= "SELECT * FROM detailpesanan JOIN pesanan ON pesanan.id_pesanan = detailpesanan.id_pesanan JOIN produk ON produk.id_produk = detailpesanan.id_produk JOIN kategori ON kategori.id_kategori = produk.id_kategori";
 		$select = mysqli_query($con,$que);
 
 		while($data= mysqli_fetch_array($select)){
@@ -29,7 +29,7 @@
 			?>
 
 			<tr>
-				<th scope="row"><?php echo $data['id_detail_pesanan']; ?></th>
+				<th scope="row"><?php echo $data['id_detailpesanan']; ?></th>
 				<td><?php echo $data['nama_produk']; ?></td>
 				<td><?php echo $data['nama_kategori']; ?></td>
 				<td>

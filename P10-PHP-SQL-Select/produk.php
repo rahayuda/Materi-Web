@@ -20,7 +20,7 @@
 	</thead>
 	<tbody>
 		<?php
-		$que   	= "SELECT * FROM produk JOIN kategori ON produk.id_produk=kategori.id_kategori";
+		$que   	= "SELECT * FROM produk INNER JOIN kategori ON produk.id_kategori=kategori.id_kategori order by id_produk";
 		$select = mysqli_query($con,$que);
 
 		while($data= mysqli_fetch_array($select)){
