@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `detail_pesanan` (
-  `id_detail_pesanan` int(11) NOT NULL AUTO_INCREMENT,
+  `id_detail_pesanan` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `id_pesanan` int(11) NOT NULL
@@ -57,7 +57,7 @@ INSERT INTO `detail_pesanan` (`id_detail_pesanan`, `jumlah`, `id_produk`, `id_pe
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -84,7 +84,7 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 --
 
 CREATE TABLE `pesanan` (
-  `id_pesanan` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pesanan` int(11) NOT NULL,
   `tanggal_pesanan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -111,7 +111,7 @@ INSERT INTO `pesanan` (`id_pesanan`, `tanggal_pesanan`) VALUES
 --
 
 CREATE TABLE `produk` (
-  `id_produk` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produk` int(11) NOT NULL,
   `nama_produk` varchar(255) NOT NULL,
   `id_kategori` int(11) NOT NULL,
   `harga` int(11) DEFAULT NULL,
