@@ -45,96 +45,98 @@
         <?php
         session_start();
         if(!isset($_SESSION['status'])) {
-        ?>
-        <a class="navbar-brand" href="#">Pemrograman Web</a>
-        <div class="row justify-content-between">
-          <div class="col-10"></div>
-          <div class="col-2 d-flex justify-content-end align-items-end">
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login</button>
-            &nbsp;
-            <button class="btn btn-dark" data-toggle="modal" data-target="#registerModal">Register</button>
+          ?>
+          <a class="navbar-brand" href="#">Pemrograman Web</a>
+          <div class="row justify-content-between">
+            <div class="col-10"></div>
+            <div class="col-2 d-flex justify-content-end align-items-end">
+              <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login</button>
+              &nbsp;
+              <button class="btn btn-dark" data-toggle="modal" data-target="#registerModal">Register</button>
+            </div>
           </div>
-        </div>
-        <?php  
-      } else if ($_SESSION['status'] == "login") {
-      $user = $_SESSION['username'];
-      ?>
-      <a class="navbar-brand" href="#">Pemrograman Web: <?php echo $_SESSION['username'] ?></a>
-      <div class="row justify-content-between">
-        <div class="col-10"></div>
-        <div class="col-2 d-flex justify-content-end align-items-end">
-          <a href="pesanan.php"><button class="btn btn-dark" type="button">Pesanan</button></a>
-          &nbsp;
-          <a href="logout.php"><button class="btn btn-dark" type="button">Logout</button></a>
-        </div>
+          <?php  
+        } else if ($_SESSION['status'] == "login") {
+          $user = $_SESSION['username'];
+          ?>
+          <a class="navbar-brand" href="#">Pemrograman Web: <?php echo $_SESSION['username'] ?></a>
+          <div class="row justify-content-between">
+            <div class="col-10"></div>
+            <div class="col-2 d-flex justify-content-end align-items-end">
+              <a href="pesanan.php"><button class="btn btn-dark" type="button">Pesanan</button></a>
+              &nbsp;
+              <a href="logout.php"><button class="btn btn-dark" type="button">Logout</button></a>
+            </div>
+          </div>
+        <?php } else if ($_SESSION['status'] == "logout") {
+          $user = "nama_nim";
+          ?>
+          <a class="navbar-brand" href="#">Pemrograman Web</a>
+          <div class="row justify-content-between">
+            <div class="col-10"></div>
+            <div class="col-2 d-flex justify-content-end align-items-end">
+              <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login</button>
+              &nbsp;
+              <button class="btn btn-dark" data-toggle="modal" data-target="#registerModal">Register</button>
+            </div>
+          </div>
+        <?php } ?>
       </div>
-      <?php } else if ($_SESSION['status'] == "logout") {
-      $user = "nama_nim";
-      ?>
-      <a class="navbar-brand" href="#">Pemrograman Web</a>
-      <div class="row justify-content-between">
-        <div class="col-10"></div>
-        <div class="col-2 d-flex justify-content-end align-items-end">
-          <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">Login</button>
-          &nbsp;
-          <button class="btn btn-dark" data-toggle="modal" data-target="#registerModal">Register</button>
-        </div>
-      </div>
+    </nav>
+  </header>
+
+  <div class="container flex-grow-1" id="content">
+    <?php
+    if (isset($_GET['notification'])) {
+      $notification = urldecode($_GET['notification']);
+      echo '<div id="customNotification" class="alert alert-dark">' . $notification . '</div>';
+    }
+    ?>
+
+    <div class="row row-cols-1 row-cols-md-4 g-3 p-3">
+      <?php
+      include "sql.php";
+      $que    = "SELECT * FROM produk INNER JOIN kategori ON produk.id_kategori=kategori.id_kategori order by id_produk";
+      $select = mysqli_query($con, $que);
+
+      while ($data = mysqli_fetch_array($select)) {
+        ?>
+        <form action="pesanan-add.php" method="post">
+          <div class="col">
+            <div class="card h-100">
+              <img src="images/<?php echo $data['gambar']; ?>" class="card-img-top" alt="..." width="300" height="200">
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $data['nama_produk']; ?></h5>
+                <p class="card-text"><?php echo $data['nama_kategori']; ?> | Stok: <?php echo $data['stok']; ?></p>
+                <hr>
+                <form>
+                  <input type="hidden" name="id_produk" value="<?php echo $data['id_produk']; ?>">
+                  <input type="hidden" name="tanggal" value="<?php echo date('Y-m-d'); ?>">
+                  <input type="hidden" name="stok" value="<?php echo $data['stok']; ?>">
+                  <div class="form-group d-flex">
+                    <input class="form-control form-control-sm max-width-input" type="number" name="jumlah">&nbsp;
+                    <?php if(isset($_SESSION['status'])) { ?>
+                      <?php if ($_SESSION['status'] == "login") { ?>
+                        <input class="btn btn-dark btn-sm ml-2" type="submit" name="submit" value="beli">
+                      <?php } ?>                      
+                    <?php } else if(!isset($_SESSION['status'])) { ?>
+                      <a href="index.php" class="btn btn-dark btn-sm ml-2">beli</a>
+                    <?php } ?>  
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </form>
       <?php } ?>
     </div>
-  </nav>
-</header>
+  </div>
 
-<div class="container flex-grow-1" id="content">
-  <?php
-  if (isset($_GET['notification'])) {
-  $notification = urldecode($_GET['notification']);
-  echo '<div id="customNotification" class="alert alert-dark">' . $notification . '</div>';
-}
-?>
+  <footer class="bg-dark text-white p-3" >
+   <a>&copy; 2023</a>
+ </footer>
 
-<div class="row row-cols-1 row-cols-md-4 g-3 p-3">
-  <?php
-  include "sql.php";
-  $que    = "SELECT * FROM produk INNER JOIN kategori ON produk.id_kategori=kategori.id_kategori order by id_produk";
-  $select = mysqli_query($con, $que);
-
-  while ($data = mysqli_fetch_array($select)) {
-  ?>
-  <form action="pesanan-add.php" method="post">
-    <div class="col">
-      <div class="card h-100">
-        <img src="images/<?php echo $data['gambar']; ?>" class="card-img-top" alt="..." width="300" height="200">
-        <div class="card-body">
-          <h5 class="card-title"><?php echo $data['nama_produk']; ?></h5>
-          <p class="card-text"><?php echo $data['nama_kategori']; ?> | Stok: <?php echo $data['stok']; ?></p>
-          <hr>
-          <form>
-            <input type="hidden" name="id_produk" value="<?php echo $data['id_produk']; ?>">
-            <input type="hidden" name="tanggal" value="<?php echo date('Y-m-d'); ?>">
-            <input type="hidden" name="stok" value="<?php echo $data['stok']; ?>">
-            <div class="form-group d-flex">
-              <input class="form-control form-control-sm max-width-input" type="number" name="jumlah">&nbsp;
-              <?php if ($_SESSION['status'] == "login") { ?>
-              <input class="btn btn-dark btn-sm ml-2" type="submit" name="submit" value="beli">
-              <?php } else if ($_SESSION['status'] == "logout" or !isset($_SESSION['status'])) { ?>
-              <a href="index.php" class="btn btn-dark btn-sm ml-2">beli</a>
-              <?php } ?>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </form>
-  <?php } ?>
-</div>
-</div>
-
-<footer class="bg-dark text-white p-3" >
- <a>&copy; 2023</a>
-</footer>
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+ <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

@@ -29,22 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$_SESSION['status'] = "login";
 				$_SESSION['role'] = "admin";
 				$_SESSION['id'] = $id_user;
-                header("location:admin/index.php");
+				header("location:admin/index.php");
 			} elseif ($role == "Customer") {
 				$_SESSION['username'] = $username;
 				$_SESSION['status'] = "login";
 				$_SESSION['role'] = "customer";
 				$_SESSION['id'] = $id_user;
-                header("location:index.php");
+				header("location:index.php");
 			}
 		}
 	} else {
 		$_SESSION['status'] = "logout";
-        header("location:index.php");
+		session_destroy();
+		header("location:index.php");
 	}
     // Menutup koneksi
 	mysqli_close($con);
 }
 ?>
-
-
