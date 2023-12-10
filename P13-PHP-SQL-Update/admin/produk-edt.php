@@ -95,7 +95,12 @@ if(isset($_POST['submit']))
     move_uploaded_file($_FILES["gambar"]["tmp_name"], $gambarPath); 
 
     $gambar  	= $_FILES["gambar"]["name"];
- 
+ 	
+    if($gambar == "") 
+    {
+    	$gambar = $nm_gambar;
+    }
+
 	$result = mysqli_query($con, "UPDATE produk SET nama_produk='$nama_produk', stok='$stok', harga='$harga', id_kategori='$id_kategori', gambar='$gambar' WHERE id_produk=$id_produk");
 
 	header("Location: index.php?page=produk");
