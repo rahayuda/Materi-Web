@@ -3,7 +3,8 @@ session_start();
 include "sql.php";
 
 // Lakukan proses autentikasi di sini
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
@@ -43,7 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		session_destroy();
 		header("location:index.php");
 	}
+
     // Menutup koneksi
 	mysqli_close($con);
 }
+else
+{
+	header("location:index.php");
+}
+
 ?>

@@ -114,7 +114,7 @@
                   <input type="hidden" name="tanggal" value="<?php echo date('Y-m-d'); ?>">
                   <input type="hidden" name="stok" value="<?php echo $data['stok']; ?>">
                   <div class="form-group d-flex">
-                    <input class="form-control form-control-sm max-width-input" type="number" name="jumlah">&nbsp;
+                    <input class="form-control form-control-sm max-width-input" type="number" min="1" max="<?php echo $data['stok']; ?>" name="jumlah">&nbsp;
                     <?php if(isset($_SESSION['status'])) { ?>
                       <?php if ($_SESSION['status'] == "login") { ?>
                         <input class="btn btn-dark btn-sm ml-2" type="submit" name="submit" value="beli">
