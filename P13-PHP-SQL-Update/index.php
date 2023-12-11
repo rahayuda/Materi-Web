@@ -151,7 +151,7 @@
           <br>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" minlength="8" required>
           </div>
           <br>
           <button type="submit" class="btn btn-dark">login</button>
@@ -171,12 +171,12 @@
         <form action="register.php" method="post">
           <div class="form-group">
             <label for="username1">Username:</label>
-            <input type="text" class="form-control" id="username1" name="username1" required>
+            <input type="text" class="form-control" id="username1" name="username1" minlength="8" maxlength="20" required>
           </div>
           <br>
           <div class="form-group">
             <label for="password1">Password:</label>
-            <input type="password" class="form-control" id="password1" name="password1" required>
+            <input type="password" class="form-control" id="password1" name="password1" minlength="8" maxlength="20" required>
           </div>
           <br>
           <div class="form-group">
