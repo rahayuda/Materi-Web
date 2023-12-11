@@ -19,8 +19,8 @@ if (isset($_POST['submit'])) {
 
         $idPesanan = mysqli_insert_id($con);
 
-        $reset	= "alter table detailpesanan AUTO_INCREMENT = 1";
-        $query	= mysqli_query($con,$reset);
+        $reset  = "alter table detailpesanan AUTO_INCREMENT = 1";
+        $query  = mysqli_query($con,$reset);
 
         $queryDetailPesanan = "INSERT INTO detailpesanan (id_produk, jumlah, id_pesanan) VALUES ('$id', '$jumlah', '$idPesanan')";
         $resultDetailPesanan = mysqli_query($con, $queryDetailPesanan);
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
 
     }
     mysqli_close($con);
-    header("Location: pesanan.php");
+    header("Location: index.php?page=pesanan");
 }
 else
 {

@@ -31,37 +31,40 @@
 			JOIN pesanan ON pesanan.id_pesanan = detailpesanan.id_pesanan 
 			JOIN user ON user.id_user = pesanan.id_user
 			JOIN produk ON produk.id_produk = detailpesanan.id_produk 
-			JOIN kategori ON kategori.id_kategori = produk.id_kategori";
+			JOIN kategori ON kategori.id_kategori = produk.id_kategori
+			order by pesanan.id_pesanan";
+			
 			$select = mysqli_query($con,$que);
 			$dana 	= 0;
+			$nomor  = 0;
 
 			while($data= mysqli_fetch_array($select)){
+				$nomor  = $nomor + 1;  
+				?>
 
-			?>
-
-			<tr>
-				<th scope="row"><?php echo $data['id_detailpesanan']; ?></th>
-				<td><?php echo $data['username']; ?></td>
-				<td><?php echo $data['nama_produk']; ?></td>
-				<td><?php echo $data['nama_kategori']; ?></td>
-				<td>
-					<?php
-					$uang = $data['harga'];
-					$uang_format = number_format($uang, 0, ',', '.');
-					echo "Rp. " . $uang_format;
-					?>					
-				</td>
-				<td><?php echo $data['jumlah']; ?></td>
-				<td>
-					<?php 
-					$total = $data['jumlah'] * $data['harga']; 
-					$total_format = number_format($total, 0, ',', '.');
-					echo "Rp. " . $total_format;
-					$dana = $dana + $total;
-					?>
-				</td>
-				<td><?php echo $data['tanggal_pesanan']; ?></td>
-			</tr>
+				<tr>
+					<th scope="row"><?php echo $nomor; ?></th>
+					<td><?php echo $data['username']; ?></td>
+					<td><?php echo $data['nama_produk']; ?></td>
+					<td><?php echo $data['nama_kategori']; ?></td>
+					<td>
+						<?php
+						$uang = $data['harga'];
+						$uang_format = number_format($uang, 0, ',', '.');
+						echo "Rp. " . $uang_format;
+						?>					
+					</td>
+					<td><?php echo $data['jumlah']; ?></td>
+					<td>
+						<?php 
+						$total = $data['jumlah'] * $data['harga']; 
+						$total_format = number_format($total, 0, ',', '.');
+						echo "Rp. " . $total_format;
+						$dana = $dana + $total;
+						?>
+					</td>
+					<td><?php echo $data['tanggal_pesanan']; ?></td>
+				</tr>
 			<?php } ?>
 		</tbody>
 	</table>

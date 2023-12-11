@@ -25,7 +25,7 @@ if($_SESSION['role'] != "admin")
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
             <div class="container">
-                <a class="navbar-brand" href="#">Pemrograman Web: <?php echo $_SESSION['username'] ?></a>                            
+                <a class="navbar-brand" href="../index.php">Pemrograman Web: <?php echo $_SESSION['username'] ?></a>                            
                 <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Sidebar
                 </button>

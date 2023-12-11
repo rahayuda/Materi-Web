@@ -29,16 +29,19 @@
 		JOIN pesanan ON pesanan.id_pesanan = detailpesanan.id_pesanan
 		JOIN user ON user.id_user = pesanan.id_user 
 		JOIN produk ON produk.id_produk = detailpesanan.id_produk 
-		JOIN kategori ON kategori.id_kategori = produk.id_kategori";
+		JOIN kategori ON kategori.id_kategori = produk.id_kategori
+		order by pesanan.id_pesanan";
+		
 		$select = mysqli_query($con,$que);
 		$dana 	= 0;
+  		$nomor  = 0;
 
 		while($data= mysqli_fetch_array($select)){
-
+		$nomor  = $nomor + 1;
 			?>
 
 			<tr>
-				<th scope="row"><?php echo $data['id_detailpesanan']; ?></th>
+				<th scope="row"><?php echo $nomor; ?></th>
 				<td><?php echo $data['username']; ?></td>
 				<td><?php echo $data['nama_produk']; ?></td>
 				<td><?php echo $data['nama_kategori']; ?></td>
