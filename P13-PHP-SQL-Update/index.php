@@ -46,7 +46,7 @@
         session_start();
         if(!isset($_SESSION['status'])) 
         {
-        ?>
+          ?>
           <a class="navbar-brand" href="index.php">Pemrograman Web</a>
           <div class="row justify-content-between">
             <div class="col-10"></div>
@@ -61,8 +61,8 @@
         else if ($_SESSION['status'] == "login") 
         {
           $user = $_SESSION['username'];
-        ?>
-          <a class="navbar-brand" href="index.php">Pemrograman Web | <?php echo $_SESSION['username'] ?></a>
+          ?>
+          <a class="navbar-brand" href="index.php"><?php echo $_SESSION['username'] ?></a>
           <div class="row justify-content-between">
             <div class="col-10"></div>
             <div class="col-2 d-flex justify-content-end align-items-end">
@@ -71,7 +71,7 @@
               <a href="index.php?page=logout"><button class="btn btn-dark" type="button">Logout</button></a>
             </div>
           </div>
-        <?php 
+          <?php 
         } 
         ?>
       </div>
@@ -85,32 +85,33 @@
       echo '<div id="customNotification" class="alert alert-dark">' . $notification . '</div>';
     }
     ?>
+    <div class="p-3 table-responsive">
+      <?php
+      include "sql.php"; 
+      $halaman = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-    <?php
-    include "sql.php"; 
-    $halaman = isset($_GET['page']) ? $_GET['page'] : 'home';
-
-    switch ($halaman) {
-      case 'login':
-      include('login.php'); 
-      break;
-      case 'logout':
-      include('logout.php'); 
-      break;
-      case 'register':
-      include('register.php'); 
-      break;
-      case 'pesanan':
-      include('pesanan.php'); 
-      break;
-      case 'pesanan-add':
-      include('pesanan-add.php'); 
-      break;
-      default:
-      include('home.php'); 
-      break;
-    }
-    ?>     
+      switch ($halaman) {
+        case 'login':
+        include('login.php'); 
+        break;
+        case 'logout':
+        include('logout.php'); 
+        break;
+        case 'register':
+        include('register.php'); 
+        break;
+        case 'pesanan':
+        include('pesanan.php'); 
+        break;
+        case 'pesanan-add':
+        include('pesanan-add.php'); 
+        break;
+        default:
+        include('home.php'); 
+        break;
+      }
+      ?> 
+    </div>    
   </div>
 
   <footer class="bg-dark text-white p-3" >

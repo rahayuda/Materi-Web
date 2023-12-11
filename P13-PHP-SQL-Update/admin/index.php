@@ -25,7 +25,7 @@ if($_SESSION['role'] != "admin")
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
             <div class="container">
-                <a class="navbar-brand" href="../index.php">Pemrograman Web: <?php echo $_SESSION['username'] ?></a>                            
+                <a class="navbar-brand" href="../index.php"><?php echo $_SESSION['username'] ?></a>                            
                 <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     Sidebar
                 </button>
@@ -54,7 +54,7 @@ if($_SESSION['role'] != "admin")
             </div>
 
             <div class="col p-3 h-100">
-                <div class="p-3">
+                <div class="p-3 table-responsive">
                     <?php
                     include "../sql.php"; 
                     $halaman = isset($_GET['page']) ? $_GET['page'] : 'produk';

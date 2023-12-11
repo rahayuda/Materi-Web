@@ -1,4 +1,4 @@
-<div class="row row-cols-1 row-cols-md-4 g-3 p-3">
+<div class="row row-cols-1 row-cols-md-4 g-3">
   <?php
   $que    = "SELECT * FROM produk INNER JOIN kategori ON produk.id_kategori=kategori.id_kategori order by id_produk";
   $select = mysqli_query($con, $que);
